@@ -119,7 +119,7 @@ body{
     font-weight: bold;
 }
 
-.search-for-results-container{
+#search-for-results-container{
     width:100%;
     display: flex;
     justify-content: center;
