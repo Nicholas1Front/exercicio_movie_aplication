@@ -66,6 +66,52 @@ body{
     font-weight: normal;
 }
 
+#popup{
+    position : fixed;
+    width:20%;
+    background-color: rgb(194, 0, 0);
+    border-radius: 10px;
+    margin-top:34%;
+    margin-left:79%;
+}
+
+.popup-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.close-control{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.close-control i{
+    padding-right:13px;
+    padding-top:8px;
+}
+
+.warning-control{
+    width:100%;
+    margin:5px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.warning-control i{
+    font-size: 34px;
+}
+
+.message-control{
+    padding:8px 0;
+}
+
+.message-control h3{
+    font-size: 15px;
+}
+
 .aplication-container{
     width:100%;
 }
@@ -110,13 +156,24 @@ body{
 .search-control button{
     width:10%;
     border-radius: 10px;
+    background-color: #121212;
+    color:#69f551;
+    border:1px solid #69f551;
+    cursor: pointer;
+}
+
+.search-control button:hover{
     background-color: #69f551;
-    color: black;
-    border:none;
+    color: #121212;
+    border: none;
 }
 
 .search-control button > i {
     font-weight: bold;
+}
+
+#clear-btn{
+    margin-left:8px;
 }
 
 #search-for-results-container{

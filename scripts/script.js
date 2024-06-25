@@ -24,11 +24,19 @@ const movieSynopsis = document.querySelector("#movie-synopsis") ;
 //     return data;
 // }
 
-async function getMovie(name,API_KEY){
-    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(name)}&apikey=${API_KEY}`);
-    const data = await response.json();
+//functions 
 
-    return data;
+async function getMovie(){
+    const movieName = searchInput;
+
+    if (movieName == "" || movieName == null) {
+        movieName = "Digite um filme válido!";
+        return;
+    }
+
+    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movieName)}&apikey=${API_KEY}`);
+
+    const movieData = await response.json();
+
+    return movieData;
 }
-
-// console.log(getMovie("the boys",API_KEY));
