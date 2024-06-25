@@ -26,17 +26,21 @@ const movieSynopsis = document.querySelector("#movie-synopsis") ;
 
 //functions 
 
-async function getMovie(){
-    const movieName = searchInput;
+async function getMovie(param){
+    // const movieName = searchInput;
 
-    if (movieName == "" || movieName == null) {
-        movieName = "Digite um filme válido!";
-        return;
-    }
+    // if (movieName == "" || movieName == null) {
+    //     movieName = "Digite um filme válido!";
+    //     return;
+    // }
 
-    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movieName)}&apikey=${API_KEY}`);
+    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(param)}&apikey=${API_KEY}`);
 
     const movieData = await response.json();
 
     return movieData;
 }
+
+getMovie("i");
+
+console.log(typeof movieData);
