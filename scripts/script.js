@@ -1,12 +1,13 @@
 // API
 
-const movieName = document.querySelector("#search-input").value  ;
+const searchInput = document.querySelector("#search-input")  ;
 const API_KEY = '939ac071';
 const searchBtn = document.querySelector("#search-btn");
 
 //elements
+const popup = document.querySelector("#popup");
+const popupMsg = document.querySelector("#popup-msg")
 
-const searchInput = document.querySelector("#search-input").value ;
 const searchForResultsContainer = document.querySelector("#search-for-results-container");
 const resultContainer = document.querySelector("#result-container");
 const movieImg = document.querySelector("#movie-img");
@@ -26,21 +27,38 @@ const movieSynopsis = document.querySelector("#movie-synopsis") ;
 
 //functions 
 
-async function getMovie(param){
-    // const movieName = searchInput;
+async function getMovie(){
+    const movie = searchInput.value ;
 
-    // if (movieName == "" || movieName == null) {
-    //     movieName = "Digite um filme válido!";
-    //     return;
-    // }
-
-    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(param)}&apikey=${API_KEY}`);
+    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movie)}&apikey=${API_KEY}`);
 
     const movieData = await response.json();
 
     return movieData;
 }
 
-getMovie("i");
+function showPopup(){
+    popup.style.display = "block";
+}
 
-console.log(typeof movieData);
+function hidePopup(){
+    popup.style.display = "none";
+}
+
+//event listerners 
+
+searchBtn.addEventListener("click", function(event){
+    event.preventDefault();
+
+    let movie = getMovie();
+
+    if (movie.Response === "False"){
+        popupMsg.innerText = "Movie not finded! Try again!";
+
+        showPopup();
+
+        setTimeout(function(){
+            hidePopup();
+        },4000)
+    }
+});
