@@ -6,7 +6,8 @@ const searchBtn = document.querySelector("#search-btn");
 
 //elements
 const popup = document.querySelector("#popup");
-const popupMsg = document.querySelector("#popup-msg")
+const popupMsg = document.querySelector("#popup-msg");
+const closePopupBtn = document.querySelector("#close-popup-btn")
 
 const searchForResultsContainer = document.querySelector("#search-for-results-container");
 const resultContainer = document.querySelector("#result-container");
@@ -87,3 +88,10 @@ searchBtn.addEventListener("click", function(event){
 
     displayResults();
 });
+
+
+closePopupBtn.addEventListener("click", function(event){
+    event.preventDefault();
+
+    hidePopup();
+})

@@ -31,7 +31,7 @@
     <div id="popup">
         <div class="popup-container">
             <div class="close-control">
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-xmark" id="close-popup-btn"></i>
             </div>
 
             <div class="warning-control">
@@ -51,14 +51,16 @@
             <h3>Search any movie!</h3>
             <div class="search-control">
                 <input type="text" name="search-input" id="search-input" placeholder="Type the movie title..."/>
-                <button id="search-btn">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                <div class="button-control"  id="search-btn" >
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     <p>SEARCH</p>
-                </button>
-                <button id="clear-btn">
+                </div>
+
+                <div class="button-control"  id="clear-btn">
                     <i class="fa-solid fa-rotate-right"></i>
                     <p>CLEAR</p>
-                </button>
+                </div>
             </div>
         </div><!--search-container-->
 
