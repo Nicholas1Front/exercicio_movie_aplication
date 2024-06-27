@@ -51,7 +51,7 @@ function displayResults(param){
     movieGender.innerHTML = "";
     movieSynopsis.innerHTML = "";
 
-    movieImg.setAttribute("src", `${param.Poster}`);
+    movieImg.setAttribute("src", param.Poster);
     movieTitle.innerText = param.Title;
     movieType.innerText = param.Type;
     movieRelease.innerText = param.Released;
@@ -61,18 +61,16 @@ function displayResults(param){
 }
 
 function clearResults(){
-    searchForResultsContainer.classList.toggle("hide");
-    resultContainer.classList.toggle("hide");
+    searchForResultsContainer.classList.add("hide");
+    resultContainer.classList.remove("hide");
 }
 
 //event listerners 
 
-searchBtn.addEventListener("click", function(event){
+searchBtn.addEventListener("click", async function(event){
     event.preventDefault();
 
-    let movie = getMovie(searchInput.value , API_KEY);
-
-    searchForResultsContainer.classList.toggle("hide");
+    const movie = await getMovie(searchInput.value,API_KEY);
 
     if (movie === false){
         popupMsg.innerText = "Movie not finded ! Try again !";
@@ -86,7 +84,8 @@ searchBtn.addEventListener("click", function(event){
 
     displayResults(movie);
 
-    resultContainer.classList.toggle("hide");
+    searchForResultsContainer.classList.add("hide");
+    resultContainer.classList.remove("hide");
 });
 
 
