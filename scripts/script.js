@@ -18,21 +18,18 @@ const movieGender = document.querySelector("#movie-gender") ;
 const moiveRatin = document.querySelector("#movie-rating") ;
 const movieSynopsis = document.querySelector("#movie-synopsis") ;
 
-// async function fetchMovieDetails(movieName , API_KEY) {
-//     const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movieName)}&apikey=${API_KEY}`);
-//     const data = await response.json();
-
-//     return data;
-// }
 
 //functions 
 
-async function getMovie(){
-    const movie = searchInput.value ;
+async function getMovie(movieName , API_KEY){
 
-    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movie)}&apikey=${API_KEY}`);
+    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movieName)}&apikey=${API_KEY}`);
 
     const movieData = await response.json();
+
+    if (movieData.Response === "False"){
+        movieData = false;
+    }
 
     return movieData;
 }
@@ -45,20 +42,48 @@ function hidePopup(){
     popup.style.display = "none";
 }
 
+function displayResults(){
+    let movie = getMovie();
+
+    movieImg.setAttribute("src", `${movie.Poster}`);
+    movieTitle.innerText = movie.Title;
+    movieType.innerText = movie.Type;
+    movieRelease.innerText = movie.Released;
+    movieGender.innerText = movie.Genre;
+    moiveRatin.innerText = movie.imdbRating;
+    movieSynopsis.innerText = movie.Plot;   
+}
+
+function clearResults(){
+    searchForResultsContainer.classList.toggle("hide");
+    resultContainer.classList.toggle("hide");
+}
+
+
+//initialization testing
+
+let movieTest = getMovie("Us",API_KEY);
+
+console.log(movieTest);
+
 //event listerners 
 
 searchBtn.addEventListener("click", function(event){
     event.preventDefault();
 
-    let movie = getMovie();
+    let movie = getMovie(searchInput.value , API_KEY);
 
-    if (movie.Response === "False"){
-        popupMsg.innerText = "Movie not finded! Try again!";
+    searchForResultsContainer.classList.remove("hide");
+
+    if (movie === false){
+        popupMsg.innerText = "Movie not finded ! Try again !";
 
         showPopup();
 
         setTimeout(function(){
             hidePopup();
-        },4000)
+        },4500);
     }
+
+    displayResults();
 });
