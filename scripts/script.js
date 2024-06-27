@@ -43,29 +43,27 @@ function hidePopup(){
     popup.style.display = "none";
 }
 
-function displayResults(){
-    let movie = getMovie();
+function displayResults(param){
+    movieTitle.innerHTML = "";
+    movieType.innerHTML = "";
+    moiveRatin.innerHTML = "";
+    movieRelease.innerHTML = "";
+    movieGender.innerHTML = "";
+    movieSynopsis.innerHTML = "";
 
-    movieImg.setAttribute("src", `${movie.Poster}`);
-    movieTitle.innerText = movie.Title;
-    movieType.innerText = movie.Type;
-    movieRelease.innerText = movie.Released;
-    movieGender.innerText = movie.Genre;
-    moiveRatin.innerText = movie.imdbRating;
-    movieSynopsis.innerText = movie.Plot;   
+    movieImg.setAttribute("src", `${param.Poster}`);
+    movieTitle.innerText = param.Title;
+    movieType.innerText = param.Type;
+    movieRelease.innerText = param.Released;
+    movieGender.innerText = param.Genre;
+    moiveRatin.innerText = param.imdbRating;
+    movieSynopsis.innerText = param.Plot;   
 }
 
 function clearResults(){
     searchForResultsContainer.classList.toggle("hide");
     resultContainer.classList.toggle("hide");
 }
-
-
-//initialization testing
-
-let movieTest = getMovie("Us",API_KEY);
-
-console.log(movieTest);
 
 //event listerners 
 
@@ -74,7 +72,7 @@ searchBtn.addEventListener("click", function(event){
 
     let movie = getMovie(searchInput.value , API_KEY);
 
-    searchForResultsContainer.classList.remove("hide");
+    searchForResultsContainer.classList.toggle("hide");
 
     if (movie === false){
         popupMsg.innerText = "Movie not finded ! Try again !";
@@ -86,7 +84,9 @@ searchBtn.addEventListener("click", function(event){
         },4500);
     }
 
-    displayResults();
+    displayResults(movie);
+
+    resultContainer.classList.toggle("hide");
 });
 
 
