@@ -167,6 +167,13 @@ body::-webkit-scrollbar-thumb {
     outline: #69f551;
 }
 
+.button-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content : center;
+}
+
 .button-control{
     display:flex;
     justify-content: center;
@@ -190,6 +197,20 @@ body::-webkit-scrollbar-thumb {
 
 .button-control i{
     font-size:19px;
+}
+
+#search-hover-span,#clear-hover-span{
+    position:absolute;
+    margin-top:5.5%;
+}
+
+#search-hover-span span, #clear-hover-span span{
+    background-color: #69f551;
+    color: #121212;
+    border-radius: 10px;
+    padding:3px 4px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 #clear-btn{

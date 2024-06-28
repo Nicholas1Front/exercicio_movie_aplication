@@ -52,14 +52,29 @@
             <h3>Search any movie!</h3>
             <div class="search-control">
                 <input type="text" name="search-input" id="search-input" placeholder="Type the movie title..." autocomplete="off"/>
+                <div class="button-container">
 
-                <div class="button-control"  id="search-btn" >
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div class="button-control"  id="search-btn" >
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    
+                    <div id="search-hover-span">
+                        <span>SEARCH</span>
+                    </div>
+
+                </div>
+                
+                <div class="button-container">
+
+                    <div class="button-control"  id="clear-btn">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </div>
+    
+                    <div id="clear-hover-span">
+                        <span>CLEAR</span>
+                    </div>
                 </div>
 
-                <div class="button-control"  id="clear-btn">
-                    <i class="fa-solid fa-rotate-right"></i>
-                </div>
             </div>
         </div><!--search-container-->
 
