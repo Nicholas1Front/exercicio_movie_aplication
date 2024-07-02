@@ -10,6 +10,9 @@ const popupMsg = document.querySelector("#popup-msg");
 const closePopupBtn = document.querySelector("#close-popup-btn")
 
 const searchForResultsContainer = document.querySelector("#search-for-results-container");
+const searchHoverSpan = document.querySelector("#search-hover-span") ;
+const clearHoverSpan = document.querySelector("#clear-hover-span") ;
+const clearBtn = document.querySelector("#clear-btn");
 const resultContainer = document.querySelector("#result-container");
 const movieImg = document.querySelector("#movie-img");
 const movieTitle = document.querySelector("#movie-title");
@@ -61,8 +64,40 @@ function displayResults(param){
 }
 
 function clearResults(){
-    searchForResultsContainer.classList.add("hide");
-    resultContainer.classList.remove("hide");
+    movieTitle.innerHTML = "";
+    movieType.innerHTML = "";
+    moiveRatin.innerHTML = "";
+    movieRelease.innerHTML = "";
+    movieGender.innerHTML = "";
+    movieSynopsis.innerHTML = "";
+
+    searchForResultsContainer.classList.remove("hide");
+    resultContainer.classList.add("hide");
+}
+
+function hoverInSearchBtn(){
+    searchHoverSpan.style.marginTop = "5%";
+    searchHoverSpan.style.opacity = "1";
+    searchHoverSpan.style.transition = "0.3s";
+    
+}
+
+function hoverInClearBtn(){
+    clearHoverSpan.style.marginTop = "5%";
+    clearHoverSpan.style.opacity= "1";
+    clearHoverSpan.style.transition = "0.2s";
+}
+
+function hoverOutClearBtn(){
+    clearHoverSpan.style.marginTop = "2%";
+    clearHoverSpan.style.opacity= "0";
+    clearHoverSpan.style.transition = "0.2s";
+}
+
+function hoverOutSearchBtn(){
+    searchHoverSpan.style.marginTop = "2%";
+    searchHoverSpan.style.opacity = "0";
+    searchHoverSpan.style.transition = "0.2s";
 }
 
 //event listerners 
@@ -88,6 +123,36 @@ searchBtn.addEventListener("click", async function(event){
     resultContainer.classList.remove("hide");
 });
 
+searchBtn.addEventListener("mouseenter", function(event){
+    event.preventDefault();
+
+    hoverInSearchBtn();
+});
+
+searchBtn.addEventListener("mouseout", function(event){
+    event.preventDefault();
+
+    hoverOutSearchBtn();
+});
+
+clearBtn.addEventListener("mouseenter", function(event){
+    event.preventDefault();
+    
+    hoverInClearBtn();
+});   
+
+
+clearBtn.addEventListener("mouseout", function(event){
+    event.preventDefault();
+    
+    hoverOutClearBtn();
+});
+
+clearBtn.addEventListener("click",function(event){
+    event.preventDefault();
+    hidePopup();
+    clearResults();
+})
 
 closePopupBtn.addEventListener("click", function(event){
     event.preventDefault();
