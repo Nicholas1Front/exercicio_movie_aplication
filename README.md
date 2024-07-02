@@ -1,4 +1,4 @@
-# movie aplication
+# movie-aplication v1.0
 
 Web application made in HTML, CSS and Javascript with the help of a movie web API.
 
